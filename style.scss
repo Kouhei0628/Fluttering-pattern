@@ -11,17 +11,17 @@ html {
     flex-wrap: wrap;
     width: 100%;
     height: 100%;
-    #quads {
+    .square {
         position: relative;
         border-radius: 50%;
         display: inline-block;
         width: calc(100vw / 9);
         height: calc(100vw / 9);
-        background-color: #a8a8a8;
+        background-color: #000000;
         transform-origin: center;
         perspective: 200px;
-        &:nth-child(even) {
-            &:hover {
+        &.animate {
+            &:nth-child(even) {
                 cursor: pointer;
                 animation: flutterX 1s;
                 animation-timing-function: cubic-bezier(0.04, 0.45, 0.58, 1);
@@ -37,9 +37,7 @@ html {
                     }
                 }
             }
-        }
-        &:nth-child(odd) {
-            &:hover {
+            &:nth-child(odd) {
                 cursor: pointer;
                 animation: flutterY 1s;
                 animation-iteration-count: forwards;
