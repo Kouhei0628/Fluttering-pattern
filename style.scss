@@ -4,6 +4,19 @@ html {
     width: 100vw;
     height: 100vh;
     background-color: yellow;
+     ::selection {
+        background-color: black;
+        color: yellow;
+    }
+    animation: bodyFadein 1s forwards;
+    @keyframes bodyFadein {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
 }
 
 #ptn_wrap {
@@ -64,6 +77,95 @@ html {
         #quads {
             width: calc(100vw / 5);
             height: calc(100vw / 5);
+        }
+    }
+}
+
+#introduction {
+    font-family: Arial, Helvetica, sans-serif;
+    position: fixed;
+    top: 0;
+    background-color: yellow;
+    width: 100vw;
+    height: 100vh;
+    #message_wrap {
+        width: 83%;
+        margin: 11% auto 11% auto;
+        padding: 20px;
+        text-align: center;
+        border: 5px solid black;
+        border-radius: 12px;
+        #welcome {
+            font-size: 69px;
+            line-height: 1em;
+            .char {
+                display: inline-block;
+                animation: kf-char-down 0.3s forwards;
+                animation-delay: 0.5s;
+                opacity: 0;
+                @keyframes kf-char-down {
+                    0% {
+                        transform: translateY(-100%);
+                        opacity: 0;
+                        color: #ff0000;
+                    }
+                    100% {
+                        transform: translateY(0%);
+                        opacity: 1;
+                        color: #000000;
+                    }
+                }
+                @for $i from 1 through 8 {
+                    &:nth-child(#{$i}) {
+                        animation-delay: $i * 0.1s;
+                    }
+                }
+            }
+        }
+        #usage {
+            display: inline;
+            font-size: 32px;
+            line-height: 36px;
+            background: linear-gradient(transparent 95%, black 0%);
+        }
+        #countDown {
+            display: inline-block;
+            background-color: black;
+            border-radius: 0.5em;
+            height: 6px;
+            width: 64%;
+            margin-top: 50px;
+            margin-bottom: 27px;
+            animation: timeRemain 5s forwards;
+            transform-origin: left;
+            transition-property: transform;
+            @keyframes timeRemain {
+                0% {
+                    transform: scaleX(1);
+                }
+                100% {
+                    transform: scaleX(0);
+                }
+            }
+        }
+        #enjoy {
+            font-size: 23px;
+        }
+        #warning {
+            font-size: 15px;
+            color: rgb(187, 187, 46);
+        }
+    }
+    animation: fadeOut forwards 1s;
+    animation-delay: 5s;
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+            visibility: visible;
+        }
+        100% {
+            visibility: hidden;
+            opacity: 0;
         }
     }
 }
