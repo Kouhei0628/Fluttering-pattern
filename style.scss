@@ -100,7 +100,8 @@ html {
             line-height: 1em;
             .char {
                 display: inline-block;
-                animation: kf-char-down 0.3s forwards;
+                animation: kf-char-down 0.5s forwards;
+                animation-timing-function: cubic-bezier(0.34, 0.1, 0.35, 1.29);
                 animation-delay: 0.5s;
                 opacity: 0;
                 @keyframes kf-char-down {
@@ -109,6 +110,9 @@ html {
                         opacity: 0;
                         color: #ff0000;
                     }
+                    // 80% {
+                    //     transform: translateY(10%);
+                    // }
                     100% {
                         transform: translateY(0%);
                         opacity: 1;
@@ -129,22 +133,30 @@ html {
             background: linear-gradient(transparent 95%, black 0%);
         }
         #countDown {
+            position: relative;
             display: inline-block;
-            background-color: black;
-            border-radius: 0.5em;
-            height: 6px;
-            width: 64%;
             margin-top: 50px;
             margin-bottom: 27px;
-            animation: timeRemain 5s forwards;
-            transform-origin: left;
-            transition-property: transform;
-            @keyframes timeRemain {
-                0% {
-                    transform: scaleX(1);
-                }
-                100% {
-                    transform: scaleX(0);
+            height: 6px;
+            width: 64%;
+            border: 1px solid black;
+            #countDown_obj {
+                position: absolute;
+                left: 0;
+                display: inline-block;
+                background-color: black;
+                height: 100%;
+                width: 100%;
+                animation: timeRemain 5s forwards;
+                transform-origin: left;
+                transition-property: transform;
+                @keyframes timeRemain {
+                    0% {
+                        transform: scaleX(1);
+                    }
+                    100% {
+                        transform: scaleX(0);
+                    }
                 }
             }
         }
